@@ -1,0 +1,30 @@
+#include<iostream>
+#include<ctime>
+
+int main() {   
+   int num; 
+   int guess; 
+   int tries; 
+
+   srand(time(NULL));  
+   num = rand() % 100 + 1;  // generate random number between 1 and 100
+
+   // welcome message and game instructions
+   std::cout << "Welcome to Guess My Number!\n";
+   std::cout << "I'm thinking of a number between 1 and 100.\n";
+   std::cout << "You have up to 5 attempts to guess it.\n\n";
+
+   for (tries=1; tries <= 5; tries++) { // loop for each try
+       std::cout << "Take " << tries << " attempt to guess the number: "; // prompt for guess
+       std::cin >> guess; // get player's guess
+
+       if (guess == num) { // check if guess is correct
+           std::cout << "\nCongratulations! You got it right in "<< tries <<" attempts.\n";
+           break; // exit loop if guess is correct
+       } else if (guess > num) {
+           std::cout << "Your guess is too high. Try lower.\n"; // give hint if guess is too high
+       } else {
+           std::cout << "Your guess is too low. Try higher.\n"; // give hint if guess is too low
+       }
+   }
+}
